@@ -12,4 +12,17 @@
         <result column="role" jdbcType="TINYINT" property="role" />
         <result column="schoolid" jdbcType="INTEGER" property="schoolid" />
     </resultMap>
+
+    <select id="selectAllManagers" resultMap="BaseResultMap1">
+        select * from manager limit #{start},#{pageSize}
+    </select>
+
+    <select id="selectCount" resultType="int">
+        select count(*) from manager
+    </select>
+
+    <select id="selectRole" resultType="int">
+        select role from manager where #{id} = id
+    </select>
+
 </mapper>

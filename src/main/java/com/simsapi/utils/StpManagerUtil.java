@@ -12,13 +12,13 @@ import cn.dev33.satoken.stp.StpLogic;
  * Sa-Token 权限认证工具类
  * @author kong
  */
-public class StpAdminUtil {
+public class StpManagerUtil {
 
     /**
      * 账号类型标识
      *
      */
-    public static final String TYPE = "admin";
+    public static final String TYPE = "manager";
 
     /**
      * 底层的 StpLogic 对象
