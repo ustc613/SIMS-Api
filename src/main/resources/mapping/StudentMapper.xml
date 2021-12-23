@@ -35,8 +35,17 @@
         on st.schoolid=sc.id
         limit #{start},#{pageSize}
     </select>
-
+    <!--  联合查询所有的学生总数，用于分页   -->
     <select id="selectCount" resultType="java.lang.Integer">
         select count(*) from student;
+    </select>
+    <!--  联合查询某个学校的学生   -->
+    <!--  联合查询某个学校的学生总数，用于分页   -->
+    <select id="selectPersonStudent" resultMap="BaseResultMap1">
+        select
+        <include refid="WithSchoolname_Column_List"/>
+        from student st join school sc
+        on st.schoolid=sc.id
+        where st.id=#{id}
     </select>
 </mapper>

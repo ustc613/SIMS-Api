@@ -1,11 +1,24 @@
 package com.simsapi.service;
 
+import com.simsapi.model.CoursegradeModel;
 import com.simsapi.model.StudentModel;
 import com.simsapi.model.dto.StudentDto;
+import com.simsapi.model.res.StudentPersonalResult;
 import com.simsapi.model.res.TableResult;
 
-import java.util.List;
 
 public interface StudentService {
+    /**
+     * 教育局管理员查看所有的学生
+     * @param studentDto
+     * @return
+     */
     TableResult<StudentModel> selectAllStudent(StudentDto studentDto);
+
+    /**
+     * 学生个人信息主页
+     * @param studentDto
+     * @return
+     */
+    StudentPersonalResult<StudentModel, CoursegradeModel>selectPersonStudent(StudentDto studentDto);
 }

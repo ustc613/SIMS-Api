@@ -24,6 +24,6 @@ public interface StudentMapper {
      */
     Integer selectCount(StudentDto studentDto);
 
-
+    List<StudentModel> selectPersonStudent(StudentDto studentDto);
 
 }

@@ -13,5 +13,5 @@ mybatis:
 logging:
   level:
     com:
-      example:
+      simsapi:
         mapper : debug

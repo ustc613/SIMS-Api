@@ -6,8 +6,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CoursegradeModel {
+    //表内结构
     private Integer courseid;
     private Integer stuid;
     private Integer grade;
-    private Double average;
+    //返回需要新加的记录
+    private String coursename;
 }

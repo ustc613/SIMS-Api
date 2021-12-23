@@ -2,10 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.simsapi.mapper.CoursegradeMapper">
 
-    <resultMap id="BaseResultMap1" type="com.simsapi.model.dto.CoursegradeDto">
+    <resultMap id="BaseResultMap1" type="com.simsapi.model.CoursegradeModel">
         <result column="courseid" jdbcType="INTEGER" property="courseid" />
         <result column="stuid" jdbcType="INTEGER" property="stuid" />
         <result column="grade" jdbcType="INTEGER" property="grade" />
+        <result column="coursename" jdbcType="VARCHAR" property="coursename"/>
     </resultMap>
-    <!--     -->
+
+    <sql id="WithCoursename_Column_List">
+        cg.courseid,cg.stuid,cg.grade,c.name as coursename
+    </sql>
+
+    <!--    查询某个学生的具体成绩   -->
+    <select id="selectGradeForStudent" resultMap="BaseResultMap1">
+        select
+        <include refid="WithCoursename_Column_List"/>
+        from coursegrade cg join course c
+        on cg.courseid = c.id
+    </select>
+
 </mapper>
