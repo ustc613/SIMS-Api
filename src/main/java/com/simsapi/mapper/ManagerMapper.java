@@ -39,4 +39,18 @@ public interface ManagerMapper {
      * @return 0：普通管理员 1：超级管理员
      */
     Integer selectRole(Integer id);
+
+    /**
+     * 根据管理员id查询schoolid，用于管理员的后续查询
+     * @param id
+     * @return
+     */
+    Integer selectSchoolid(Integer id);
+
+    /**
+     * super插入学校管理员
+     * @param managerDto
+     * @return
+     */
+    Boolean insertManager(ManagerDto managerDto);
 }

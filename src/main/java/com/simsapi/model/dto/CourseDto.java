@@ -3,7 +3,7 @@ package com.simsapi.model.dto;
 import lombok.Data;
 
 @Data
-public class CoruseDto extends BaseDto{
+public class CourseDto extends BaseDto{
     private Integer id;
     private Integer schoolid;
     private String name;

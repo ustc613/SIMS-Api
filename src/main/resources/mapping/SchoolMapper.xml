@@ -7,4 +7,18 @@
         <result column="name" jdbcType="VARCHAR" property="name" />
         <result column="address" jdbcType="VARCHAR" property="address" />
     </resultMap>
+
+    <select id="selectSchoolId" resultType="java.lang.Integer">
+        select id from school where name=#{schoolname}
+    </select>
+
+    <select id="getAllSchool" resultMap="BaseResultMap1">
+        select * from school
+    </select>
+
+    <insert id="insertSchool" parameterType="com.simsapi.model.dto.SchoolDto">
+        insert into school(name,address) values
+        (#{name},#{address})
+    </insert>
+
 </mapper>

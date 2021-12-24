@@ -33,14 +33,13 @@
         <include refid="WithSchoolname_Column_List"/>
         from student st join school sc
         on st.schoolid=sc.id
-        limit #{start},#{pageSize}
+        <!--  limit #{start},#{pageSize}   -->
     </select>
     <!--  联合查询所有的学生总数，用于分页   -->
     <select id="selectCount" resultType="java.lang.Integer">
         select count(*) from student;
     </select>
     <!--  联合查询某个学校的学生   -->
-    <!--  联合查询某个学校的学生总数，用于分页   -->
     <select id="selectPersonStudent" resultMap="BaseResultMap1">
         select
         <include refid="WithSchoolname_Column_List"/>
@@ -52,4 +51,22 @@
     <select id="selectIdForLogin" resultType="int">
         select id from student where #{username} = username and #{password} = password
     </select>
+
+    <!-- 根据学校管理员id查出来schoolid后再根据schoolid查询所有的学生  -->
+    <select id="selectForManager0" resultMap="BaseResultMap1">
+        select
+        <include refid="WithSchoolname_Column_List"/>
+        from student st join school sc
+        on st.schoolid=sc.id
+        where st.schoolid=#{schoolid}
+    </select>
+    <!-- 学校管理员添加学生  -->
+    <insert id="insertStudent" parameterType="com.simsapi.model.dto.StudentDto">
+        insert into student(schoolid,name,age,sex,phone,username,password) values
+        (#{schoolid},#{name},#{age},#{sex},#{phone},#{username},#{password})
+    </insert>
+    <!-- 学校管理员删除学生  -->
+    <delete id="deleteStudentById">
+        delete from student where id = #{id}
+    </delete>
 </mapper>

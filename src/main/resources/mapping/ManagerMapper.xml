@@ -28,4 +28,13 @@
     <select id="selectIdForLogin" resultType="int">
         select id from manager where #{username} = username and #{password} = password
     </select>
+
+    <select id="selectSchoolid" resultType="int">
+        select schoolid from manager where id=#{id}
+    </select>
+
+    <insert id="insertManager" parameterType="com.simsapi.model.dto.ManagerDto">
+        insert into manager(username,password,name,sex,phone,role,schoolid) values
+        (#{username},#{password},#{name},#{sex},#{phone},#{role},#{schoolid})
+    </insert>
 </mapper>

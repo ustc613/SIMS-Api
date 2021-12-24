@@ -7,6 +7,21 @@
         <result column="schoolid" jdbcType="INTEGER" property="schoolid" />
         <result column="name" jdbcType="VARCHAR" property="name" />
         <result column="teachername" jdbcType="VARCHAR" property="teachername" />
+        <result column="average" jdbcType="DECIMAL" property="average"/>
     </resultMap>
+
+    <sql id="WithCourseAverage_Column_List">
+        c.id,c.schoolid,c.name,c.teachername,AVG(cg.grade) as average
+    </sql>
+
+    <!-- 学校管理员查询所有课程  -->
+    <select id="selectAllCoruse" resultMap="BaseResultMap1">
+        select
+        <include refid="WithCourseAverage_Column_List"/>
+        from course c join coursegrade cg
+        on c.id = cg.courseid
+        where c.schoolid = #{schoolid}
+        group by c.id
+    </select>
 
 </mapper>

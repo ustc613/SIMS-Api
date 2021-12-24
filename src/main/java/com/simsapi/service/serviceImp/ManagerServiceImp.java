@@ -2,8 +2,11 @@ package com.simsapi.service.serviceImp;
 
 import cn.dev33.satoken.util.SaResult;
 import com.simsapi.mapper.ManagerMapper;
+import com.simsapi.mapper.SchoolMapper;
 import com.simsapi.model.ManagerModel;
+import com.simsapi.model.StudentModel;
 import com.simsapi.model.dto.ManagerDto;
+import com.simsapi.model.dto.SchoolDto;
 import com.simsapi.model.res.TableResult;
 import com.simsapi.service.ManagerService;
 import com.simsapi.utils.StpManagerUtil;
@@ -16,6 +19,9 @@ import java.util.List;
 public class ManagerServiceImp implements ManagerService {
     @Autowired
     ManagerMapper managerMapper;
+
+    @Autowired
+    SchoolMapper schoolMapper;
 
     @Override
     public SaResult login(ManagerDto managerDto) {
@@ -37,5 +43,12 @@ public class ManagerServiceImp implements ManagerService {
         result.setTotalCount(managerMapper.selectCount());
         result.setPageCount(managerDto.getPageSize());
         return  result;
+    }
+
+
+    @Override
+    public Boolean insertManager(ManagerDto managerDto) {
+        managerDto.setSchoolid(schoolMapper.selectSchoolId(managerDto.getSchoolname()));
+        return managerMapper.insertManager(managerDto);
     }
 }

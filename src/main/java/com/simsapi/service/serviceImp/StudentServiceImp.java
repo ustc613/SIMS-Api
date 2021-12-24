@@ -3,10 +3,12 @@ package com.simsapi.service.serviceImp;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
 import com.simsapi.mapper.CoursegradeMapper;
+import com.simsapi.mapper.ManagerMapper;
 import com.simsapi.mapper.SchoolMapper;
 import com.simsapi.mapper.StudentMapper;
 import com.simsapi.model.CoursegradeModel;
 import com.simsapi.model.StudentModel;
+import com.simsapi.model.dto.ManagerDto;
 import com.simsapi.model.dto.StudentDto;
 import com.simsapi.model.res.StudentPersonalResult;
 import com.simsapi.model.res.TableResult;
@@ -26,6 +28,12 @@ public class StudentServiceImp implements StudentService {
 
     @Autowired
     CoursegradeMapper coursegradeMapper;
+
+    @Autowired
+    private ManagerMapper managerMapper;
+
+    @Autowired
+    private SchoolMapper schoolMapper;
 
     @Override
     public SaResult login(StudentDto studentDto) {
@@ -66,5 +74,28 @@ public class StudentServiceImp implements StudentService {
         res.setAverage(average);
 
         return res;
+    }
+
+    @Override
+    public TableResult<StudentModel> getSchoolStudent(ManagerDto managerDto) {
+        Integer shcoolid = managerMapper.selectSchoolid(managerDto.getId());
+        StudentDto studentDto = new StudentDto();
+        studentDto.setSchoolid(shcoolid);
+        List<StudentModel> students = studentMapper.selectForManager0(studentDto);
+        TableResult<StudentModel> tableResult = new TableResult<>();
+        tableResult.setRows(students);
+        tableResult.setTotalCount(students.size());
+        return tableResult;
+    }
+
+    @Override
+    public Boolean insertStudent(StudentDto studentDto) {
+        studentDto.setSchoolid(schoolMapper.selectSchoolId(studentDto.getSchoolname()));
+        return studentMapper.insertStudent(studentDto);
+    }
+
+    @Override
+    public Boolean deleteStudentById(StudentDto studentDto) {
+        return studentMapper.deleteStudentById(studentDto.getId());
     }
 }

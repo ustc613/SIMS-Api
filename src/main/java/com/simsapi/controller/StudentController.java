@@ -56,13 +56,15 @@ public class StudentController {
 
     /**
      * 学生登录，只能查看自己的信息
-     * @param studentDto
+     * @param
      * @return
      */
     @CrossOrigin(origins = "*",maxAge = 3600)
     @RequestMapping(value = "/personal",method = RequestMethod.POST)
     @SaCheckLogin //学生需要先登录 coockie中才能保存他的id
-    public StudentPersonalResult<StudentModel, CoursegradeModel> getStudent(@RequestBody StudentDto studentDto){
+    public StudentPersonalResult<StudentModel, CoursegradeModel> getStudent(){
+        StudentDto studentDto = new StudentDto();
+        studentDto.setId(StpUtil.getLoginIdAsInt());
         return studentService.selectPersonStudent(studentDto);
     }
 }

@@ -14,4 +14,5 @@ public class ManagerDto extends BaseDto{
     private String phone;
     private Integer role;
     private Integer schoolid;
+    private String schoolname;
 }
