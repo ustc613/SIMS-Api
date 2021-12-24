@@ -25,4 +25,7 @@
         select role from manager where #{id} = id
     </select>
 
+    <select id="selectIdForLogin" resultType="int">
+        select id from manager where #{username} = username and #{password} = password
+    </select>
 </mapper>

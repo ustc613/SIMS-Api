@@ -1,5 +1,6 @@
 package com.simsapi.service;
 
+import cn.dev33.satoken.util.SaResult;
 import com.simsapi.model.CoursegradeModel;
 import com.simsapi.model.StudentModel;
 import com.simsapi.model.dto.StudentDto;
@@ -8,6 +9,9 @@ import com.simsapi.model.res.TableResult;
 
 
 public interface StudentService {
+
+    SaResult login(StudentDto studentDto);
+
     /**
      * 教育局管理员查看所有的学生
      * @param studentDto

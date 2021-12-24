@@ -48,4 +48,8 @@
         on st.schoolid=sc.id
         where st.id=#{id}
     </select>
+    <!-- 学生根据用户名和密码登录 并查询学生的id  -->
+    <select id="selectIdForLogin" resultType="int">
+        select id from student where #{username} = username and #{password} = password
+    </select>
 </mapper>

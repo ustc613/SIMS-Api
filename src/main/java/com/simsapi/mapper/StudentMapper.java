@@ -10,6 +10,14 @@ import java.util.List;
 @Mapper
 @Repository
 public interface StudentMapper {
+
+    /**
+     * 学生登录并查询学生的id
+     * @param studentDto
+     * @return
+     */
+    Integer selectIdForLogin(StudentDto studentDto);
+
     /**
      * 教育局管理员查看所有学生信息
      * @param studentDto
