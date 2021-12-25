@@ -17,7 +17,7 @@ public interface SchoolService {
      * @param schoolDto
      * @return
      */
-    Boolean insertSchool(SchoolDto schoolDto);
+    SaResult insertSchool(SchoolDto schoolDto);
 
     /**
      * 更新学校信息

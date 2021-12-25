@@ -10,7 +10,7 @@ public interface ManagerService {
     TableResult<ManagerModel> getAllManagers();
     SaResult login(ManagerDto managerDto);
 
-    Boolean insertManager(ManagerDto managerDto);
+    SaResult insertManager(ManagerDto managerDto);
 
     /**
      * 更新管理员信息

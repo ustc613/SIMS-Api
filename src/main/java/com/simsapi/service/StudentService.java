@@ -39,14 +39,14 @@ public interface StudentService {
      * @param studentDto
      * @return
      */
-    Boolean insertStudent(StudentDto studentDto);
+    SaResult insertStudent(StudentDto studentDto);
 
     /**
      * 学校管理员删除学生
      * @param studentDto
      * @return
      */
-    Boolean deleteStudentById(StudentDto studentDto);
+    SaResult deleteStudentById(StudentDto studentDto);
 
     /**
      * 更新学生信息

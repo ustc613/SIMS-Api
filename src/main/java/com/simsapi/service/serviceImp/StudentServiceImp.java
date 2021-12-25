@@ -9,13 +9,10 @@ import com.simsapi.mapper.StudentMapper;
 import com.simsapi.model.CoursegradeModel;
 import com.simsapi.model.StudentModel;
 import com.simsapi.model.dto.ManagerDto;
-import com.simsapi.model.dto.SchoolDto;
 import com.simsapi.model.dto.StudentDto;
 import com.simsapi.model.res.StudentPersonalResult;
 import com.simsapi.model.res.TableResult;
-import com.simsapi.service.CoursegradeService;
 import com.simsapi.service.StudentService;
-import com.simsapi.utils.StpManagerUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -90,14 +87,24 @@ public class StudentServiceImp implements StudentService {
     }
 
     @Override
-    public Boolean insertStudent(StudentDto studentDto) {
+    public SaResult insertStudent(StudentDto studentDto) {
         studentDto.setSchoolid(schoolMapper.selectSchoolId(studentDto.getSchoolname()));
-        return studentMapper.insertStudent(studentDto);
+        Boolean b = studentMapper.insertStudent(studentDto);
+        if(b == true){
+            return SaResult.ok("添加学生成功");
+        } else {
+            return SaResult.error("添加学生失败");
+        }
     }
 
     @Override
-    public Boolean deleteStudentById(StudentDto studentDto) {
-        return studentMapper.deleteStudentById(studentDto.getId());
+    public SaResult deleteStudentById(StudentDto studentDto) {
+        Boolean b = studentMapper.deleteStudentById(studentDto.getId());
+        if(b == true){
+            return SaResult.ok("删除学生成功");
+        }  else{
+            return SaResult.error("添加学生失败");
+        }
     }
 
     @Override

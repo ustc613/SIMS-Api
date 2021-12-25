@@ -27,8 +27,13 @@ public class SchoolServiceImp implements SchoolService {
     }
 
     @Override
-    public Boolean insertSchool(SchoolDto schoolDto) {
-        return schoolMapper.insertSchool(schoolDto);
+    public SaResult insertSchool(SchoolDto schoolDto) {
+        Boolean b = schoolMapper.insertSchool(schoolDto);
+        if(b == true){
+            return SaResult.ok("添加学校成功");
+        } else{
+            return SaResult.error("添加学校失败");
+        }
     }
 
     @Override

@@ -80,7 +80,7 @@ public class ManagerController {
      */
     @PostMapping("/addSchool")
     @SaCheckRole(type = "manager",value = "super")
-    public Boolean addSchool(@RequestBody SchoolDto schoolDto){
+    public SaResult addSchool(@RequestBody SchoolDto schoolDto){
         return schoolService.insertSchool(schoolDto);
     }
 
@@ -92,7 +92,7 @@ public class ManagerController {
      */
     @PostMapping("/addManager")
     @SaCheckRole(type = "manager",value = "super")
-    public Boolean addManager(@RequestBody ManagerDto managerDto){
+    public SaResult addManager(@RequestBody ManagerDto managerDto){
         return managerService.insertManager(managerDto);
     }
 
@@ -155,7 +155,7 @@ public class ManagerController {
      */
     @PostMapping("/addStudent")
     @SaCheckRole(type = "manager",value = "normal")
-    public Boolean addStudent(@RequestBody StudentDto studentDto){
+    public SaResult addStudent(@RequestBody StudentDto studentDto){
         return studentService.insertStudent(studentDto);
     }
 
@@ -166,7 +166,7 @@ public class ManagerController {
      */
     @PostMapping("/deleteStudent")
     @SaCheckRole(type = "manager",value = "normal")
-    public Boolean deleteStudent(@RequestBody StudentDto studentDto){
+    public SaResult deleteStudent(@RequestBody StudentDto studentDto){
         return studentService.deleteStudentById(studentDto);
     }
 

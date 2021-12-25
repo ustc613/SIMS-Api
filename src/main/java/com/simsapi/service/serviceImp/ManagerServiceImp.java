@@ -48,9 +48,14 @@ public class ManagerServiceImp implements ManagerService {
 
 
     @Override
-    public Boolean insertManager(ManagerDto managerDto) {
+    public SaResult insertManager(ManagerDto managerDto) {
         managerDto.setSchoolid(schoolMapper.selectSchoolId(managerDto.getSchoolname()));
-        return managerMapper.insertManager(managerDto);
+        Boolean b = managerMapper.insertManager(managerDto);
+        if(b == true){
+            return SaResult.ok("添加管理员成功");
+        } else {
+            return SaResult.error("添加管理员失败");
+        }
     }
 
     @Override
