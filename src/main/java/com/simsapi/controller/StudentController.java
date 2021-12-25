@@ -48,7 +48,6 @@ public class StudentController {
      * @param studentDto
      * @return TableResult<StudentModel>
      */
-    @CrossOrigin(origins = "*",maxAge = 3600)
     @RequestMapping(value = "",method = RequestMethod.POST)
     @SaCheckRole(type = "manager",value = "super")
     public TableResult<StudentModel> getAllStudent(@RequestBody StudentDto studentDto){
@@ -60,7 +59,6 @@ public class StudentController {
      * @param
      * @return
      */
-    @CrossOrigin(origins = "*",maxAge = 3600)
     @RequestMapping(value = "/personal",method = RequestMethod.POST)
     @SaCheckLogin //学生需要先登录 coockie中才能保存他的id
     public StudentPersonalResult<StudentModel, CoursegradeModel> getStudent(){

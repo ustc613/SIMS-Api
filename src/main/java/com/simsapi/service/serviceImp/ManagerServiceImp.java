@@ -1,5 +1,6 @@
 package com.simsapi.service.serviceImp;
 
+import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
 import com.simsapi.mapper.ManagerMapper;
 import com.simsapi.mapper.SchoolMapper;
@@ -27,11 +28,11 @@ public class ManagerServiceImp implements ManagerService {
     public SaResult login(ManagerDto managerDto) {
         Integer id = managerMapper.selectIdForLogin(managerDto);
         //没有查询到 登陆失败
-        if(id == null){
+        if (id == null) {
             return SaResult.error("登录失败：账号或密码错误");
         } else {
             StpManagerUtil.login(id);
-            return SaResult.ok("登录成功");
+            return new SaResult(200, "登录成功", StpUtil.getTokenInfo());
         }
     }
 
@@ -42,7 +43,7 @@ public class ManagerServiceImp implements ManagerService {
         result.setRows(managerModels);
         result.setTotalCount(managerMapper.selectCount());
         result.setPageCount(managerDto.getPageSize());
-        return  result;
+        return result;
     }
 
 
