@@ -1,6 +1,8 @@
 package com.simsapi.service;
 
+import cn.dev33.satoken.util.SaResult;
 import com.simsapi.model.CourseModel;
+import com.simsapi.model.dto.CourseDto;
 import com.simsapi.model.dto.ManagerDto;
 import com.simsapi.model.dto.SchoolDto;
 import com.simsapi.model.res.TableResult;
@@ -21,4 +23,6 @@ public interface CourseService {
      * @return
      */
     TableResult<CourseModel> selectAllcoruseForSuper(SchoolDto schoolDto);
+
+    SaResult insertCourseForManager(CourseDto courseDto);
 }

@@ -24,4 +24,8 @@
         group by c.id
     </select>
 
+    <insert id="insertCourseForManager"  parameterType="com.simsapi.model.dto.CourseDto">
+        insert into course(schoolid,name,teachername) values
+        (#{schoolid},#{name},#{teachername})
+    </insert>
 </mapper>

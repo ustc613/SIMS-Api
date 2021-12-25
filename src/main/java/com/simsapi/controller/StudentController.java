@@ -50,6 +50,7 @@ public class StudentController {
      */
     @CrossOrigin(origins = "*",maxAge = 3600)
     @RequestMapping(value = "",method = RequestMethod.POST)
+    @SaCheckRole(type = "manager",value = "super")
     public TableResult<StudentModel> getAllStudent(@RequestBody StudentDto studentDto){
         return studentService.selectAllStudent(studentDto);
     }

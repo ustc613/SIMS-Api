@@ -8,6 +8,7 @@ import com.simsapi.model.CourseModel;
 import com.simsapi.model.ManagerModel;
 import com.simsapi.model.SchoolModel;
 import com.simsapi.model.StudentModel;
+import com.simsapi.model.dto.CourseDto;
 import com.simsapi.model.dto.ManagerDto;
 import com.simsapi.model.dto.SchoolDto;
 import com.simsapi.model.dto.StudentDto;
@@ -104,6 +105,8 @@ public class ManagerController {
     }
 
 
+
+
     /**
      * 学校管理员获取所有学生
      * @param managerDto
@@ -126,6 +129,18 @@ public class ManagerController {
     @SaCheckRole(type = "manager",value = "normal")
     public TableResult<CourseModel> getCoursesForManager(@RequestBody ManagerDto managerDto){
         return courseService.selectAllcoruse(managerDto);
+    }
+
+    /**
+     * 学校管理员为他管理的学校添加课程
+     * @param courseDto
+     * @return
+     */
+    @PostMapping("/addCourse")
+    @CrossOrigin(origins = "*",maxAge = 3600)
+    @SaCheckRole(type = "manager",value = "normal")
+    public SaResult addCourseForManager(@RequestBody CourseDto courseDto){
+        return courseService.insertCourseForManager(courseDto);
     }
 
     /**
