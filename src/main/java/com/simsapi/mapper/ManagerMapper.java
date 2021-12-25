@@ -25,12 +25,12 @@ public interface ManagerMapper {
     Integer selectCount();
 
     /**
-     * 为登录查询用户的id
+     * 为登录查询用户
      * 需要username、password相匹配
      * @param managerDto
      * @return
      */
-    Integer selectIdForLogin(ManagerDto managerDto);
+    ManagerModel selectForLogin(ManagerDto managerDto);
 
 
     /**

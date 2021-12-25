@@ -26,13 +26,13 @@ public class ManagerServiceImp implements ManagerService {
 
     @Override
     public SaResult login(ManagerDto managerDto) {
-        Integer id = managerMapper.selectIdForLogin(managerDto);
+        ManagerModel manager = managerMapper.selectForLogin(managerDto);
         //没有查询到 登陆失败
-        if (id == null) {
+        if (manager == null) {
             return SaResult.error("登录失败：账号或密码错误");
         } else {
-            StpManagerUtil.login(id);
-            return new SaResult(200, "登录成功", StpUtil.getTokenInfo());
+            StpManagerUtil.login(manager.getId());
+            return new SaResult(200, "登录成功", manager);
         }
     }
 
