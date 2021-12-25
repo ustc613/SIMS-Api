@@ -13,10 +13,10 @@ import java.util.List;
 public interface ManagerMapper {
     /**
      * 分页查询所有管理员信息
-     * @param managerDto
+     * @param
      * @return
      */
-    List<ManagerModel> selectAllManagers(ManagerDto managerDto);
+    List<ManagerModel> selectAllManagers();
 
     /**
      * 查询所有管理员数量

@@ -2,8 +2,8 @@ package com.simsapi.controller;
 
 import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.annotation.SaCheckRole;
+import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
-import com.simsapi.mapper.ManagerMapper;
 import com.simsapi.model.CourseModel;
 import com.simsapi.model.ManagerModel;
 import com.simsapi.model.SchoolModel;
@@ -51,14 +51,14 @@ public class ManagerController {
 
     /**
      * super管理员获取所有学校管理员
-     * @param managerDto
+     * @param
      * @return
      */
-    @PostMapping("")
+    @PostMapping("/allManager")
     @SaCheckLogin(type = "manager")
     @SaCheckRole(type = "manager",value = "super")
-    public TableResult<ManagerModel> getAllManagers(@RequestBody ManagerDto managerDto){
-        return managerService.getAllManagers(managerDto);
+    public TableResult<ManagerModel> getAllManagers(){
+        return managerService.getAllManagers();
     }
 
     /**
@@ -66,6 +66,7 @@ public class ManagerController {
      * @return
      */
     @PostMapping("/school")
+    @CrossOrigin(origins = "*",maxAge = 3600)
     @SaCheckRole(type = "manager",value = "super")
     public TableResult<SchoolModel> getAllSchool(){
         return schoolService.getSchool();
@@ -77,6 +78,7 @@ public class ManagerController {
      * @return
      */
     @PostMapping("/addSchool")
+    @CrossOrigin(origins = "*",maxAge = 3600)
     @SaCheckRole(type = "manager",value = "super")
     public Boolean addSchool(@RequestBody SchoolDto schoolDto){
         return schoolService.insertSchool(schoolDto);
@@ -89,13 +91,21 @@ public class ManagerController {
      * @return
      */
     @PostMapping("/addManager")
+    @CrossOrigin(origins = "*",maxAge = 3600)
     @SaCheckRole(type = "manager",value = "super")
     public Boolean addManager(@RequestBody ManagerDto managerDto){
         return managerService.insertManager(managerDto);
     }
 
 
+    /**
+     * super管理员查询某个学校的所有课程
+     * @param schoolDto
+     * @return
+     */
     @PostMapping("/getCourses")
+    @CrossOrigin(origins = "*",maxAge = 3600)
+    @SaCheckRole(type = "manager",value = "super")
     public TableResult<CourseModel> getCoursesForSuper(@RequestBody SchoolDto schoolDto){
         return courseService.selectAllcoruseForSuper(schoolDto);
     }
@@ -105,23 +115,29 @@ public class ManagerController {
 
     /**
      * 学校管理员获取所有学生
-     * @param managerDto
+     * @param
      * @return
      */
     @PostMapping("/allStudent")
+    @CrossOrigin(origins = "*",maxAge = 3600)
     @SaCheckRole(type = "manager",value = "normal")
-    public TableResult<StudentModel> getStudentForManager(@RequestBody ManagerDto managerDto){
+    public TableResult<StudentModel> getStudentForManager(){
+        ManagerDto managerDto = new ManagerDto();
+        managerDto.setId(StpUtil.getLoginIdAsInt());
         return studentService.getSchoolStudent(managerDto);
     }
 
     /**
      * 学校管理员查看所有课程接口
-     * @param managerDto
+     * @param
      * @return
      */
     @PostMapping("/allCourse")
+    @CrossOrigin(origins = "*",maxAge = 3600)
     @SaCheckRole(type = "manager",value = "normal")
-    public TableResult<CourseModel> getCoursesForManager(@RequestBody ManagerDto managerDto){
+    public TableResult<CourseModel> getCoursesForManager(){
+        ManagerDto managerDto = new ManagerDto();
+        managerDto.setId(StpUtil.getLoginIdAsInt());
         return courseService.selectAllcoruse(managerDto);
     }
 
@@ -131,6 +147,7 @@ public class ManagerController {
      * @return
      */
     @PostMapping("/addCourse")
+    @CrossOrigin(origins = "*",maxAge = 3600)
     @SaCheckRole(type = "manager",value = "normal")
     public SaResult addCourseForManager(@RequestBody CourseDto courseDto){
         return courseService.insertCourseForManager(courseDto);
@@ -142,12 +159,19 @@ public class ManagerController {
      * @return
      */
     @PostMapping("/addStudent")
+    @CrossOrigin(origins = "*",maxAge = 3600)
     @SaCheckRole(type = "manager",value = "normal")
     public Boolean addStudent(@RequestBody StudentDto studentDto){
         return studentService.insertStudent(studentDto);
     }
 
+    /**
+     * 学校管理员删除某个学生
+     * @param studentDto
+     * @return
+     */
     @PostMapping("/deleteStudent")
+    @CrossOrigin(origins = "*",maxAge = 3600)
     @SaCheckRole(type = "manager",value = "normal")
     public Boolean deleteStudent(@RequestBody StudentDto studentDto){
         return studentService.deleteStudentById(studentDto);
