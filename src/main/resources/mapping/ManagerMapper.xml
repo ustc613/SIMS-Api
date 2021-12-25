@@ -14,7 +14,7 @@
     </resultMap>
 
     <select id="selectAllManagers" resultMap="BaseResultMap1">
-        select * from manager limit #{start},#{pageSize}
+        select * from manager
     </select>
 
     <select id="selectCount" resultType="int">

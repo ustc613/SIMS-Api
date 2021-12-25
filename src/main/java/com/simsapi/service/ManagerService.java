@@ -7,7 +7,7 @@ import com.simsapi.model.dto.ManagerDto;
 import com.simsapi.model.res.TableResult;
 
 public interface ManagerService {
-    TableResult<ManagerModel> getAllManagers(ManagerDto managerDto);
+    TableResult<ManagerModel> getAllManagers();
     SaResult login(ManagerDto managerDto);
 
     Boolean insertManager(ManagerDto managerDto);

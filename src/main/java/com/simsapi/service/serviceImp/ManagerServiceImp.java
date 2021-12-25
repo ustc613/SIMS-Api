@@ -24,6 +24,7 @@ public class ManagerServiceImp implements ManagerService {
     @Autowired
     SchoolMapper schoolMapper;
 
+
     @Override
     public SaResult login(ManagerDto managerDto) {
         Integer id = managerMapper.selectIdForLogin(managerDto);
@@ -37,12 +38,11 @@ public class ManagerServiceImp implements ManagerService {
     }
 
     @Override
-    public TableResult<ManagerModel> getAllManagers(ManagerDto managerDto) {
+    public TableResult<ManagerModel> getAllManagers() {
         TableResult<ManagerModel> result = new TableResult<>();
-        List<ManagerModel> managerModels = managerMapper.selectAllManagers(managerDto);
+        List<ManagerModel> managerModels = managerMapper.selectAllManagers();
         result.setRows(managerModels);
         result.setTotalCount(managerMapper.selectCount());
-        result.setPageCount(managerDto.getPageSize());
         return result;
     }
 

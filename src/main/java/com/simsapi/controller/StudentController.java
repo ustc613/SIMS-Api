@@ -44,7 +44,7 @@ public class StudentController {
     }
 
     /**
-     * 查看学生信息得到所有学生信息
+     * 查看学生信息得到所有学生信息（这个接口暂时没啥用）
      * @param studentDto
      * @return TableResult<StudentModel>
      */
