@@ -37,4 +37,18 @@
         insert into manager(username,password,name,sex,phone,role,schoolid) values
         (#{username},#{password},#{name},#{sex},#{phone},#{role},#{schoolid})
     </insert>
+
+    <update id="updateManager" parameterType="com.simsapi.model.dto.ManagerDto">
+        update manager
+        <set>
+            <if test="username!=null">username=#{username},</if>
+            <if test="password!=null">password=#{password},</if>
+            <if test="name!=null">name=#{name},</if>
+            <if test="sex!=null">sex=#{sex},</if>
+            <if test="phone!=null">phone=#{phone},</if>
+            <if test="role!=null">role=#{role},</if>
+
+        </set>
+        where id=#{id}
+    </update>
 </mapper>

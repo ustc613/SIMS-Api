@@ -71,6 +71,8 @@ public class ManagerController {
         return schoolService.getSchool();
     }
 
+
+
     /**
      * super管理员添加学校
      * @param schoolDto
@@ -166,5 +168,49 @@ public class ManagerController {
     @SaCheckRole(type = "manager",value = "normal")
     public Boolean deleteStudent(@RequestBody StudentDto studentDto){
         return studentService.deleteStudentById(studentDto);
+    }
+
+    /**
+     * 所有管理员更新学生信息
+     * @param studentDto
+     * @return
+     */
+    @PostMapping("/updateStudent")
+    @SaCheckLogin(type = "manager")
+    public SaResult updateStudent(@RequestBody StudentDto studentDto){
+        return studentService.upadteStudent(studentDto);
+    }
+
+    /**
+     * 所有管理员更新学校信息
+     * @param schoolDto
+     * @return
+     */
+    @PostMapping("/updateSchool")
+    @SaCheckLogin(type = "manager")
+    public SaResult updateSchool(@RequestBody SchoolDto schoolDto){
+        return schoolService.updateSchool(schoolDto);
+    }
+
+    /**
+     * super管理员更新管理员信息
+     * @param managerDto
+     * @return
+     */
+    @PostMapping("/updateManager")
+    @SaCheckRole(type = "manager",value="super")
+    public SaResult updateStudent(@RequestBody ManagerDto managerDto){
+        return managerService.updateManager(managerDto);
+    }
+
+    /**
+     * 所有管理员更新课程信息
+     * @param courseDto
+     * @return
+     */
+    @PostMapping("/updateCourse")
+    @SaCheckLogin(type = "manager")
+    public SaResult updateCourse(@RequestBody CourseDto courseDto){
+        return courseService.updateCourse(courseDto);
     }
 }

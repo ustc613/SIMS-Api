@@ -11,4 +11,11 @@ public interface ManagerService {
     SaResult login(ManagerDto managerDto);
 
     Boolean insertManager(ManagerDto managerDto);
+
+    /**
+     * 更新管理员信息
+     * @param managerDto
+     * @return
+     */
+    SaResult updateManager(ManagerDto managerDto);
 }

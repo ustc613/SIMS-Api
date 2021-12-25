@@ -21,4 +21,13 @@
         (#{name},#{address})
     </insert>
 
+    <update id="updateSchool" parameterType="com.simsapi.model.dto.SchoolDto">
+        update school
+        <set>
+            <if test="name!=null">name=#{name},</if>
+            <if test="address!=null">address=#{address},</if>
+        </set>
+        where id=#{id}
+    </update>
+
 </mapper>

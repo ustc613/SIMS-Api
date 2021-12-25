@@ -1,5 +1,6 @@
 package com.simsapi.service.serviceImp;
 
+import cn.dev33.satoken.util.SaResult;
 import com.simsapi.mapper.SchoolMapper;
 import com.simsapi.model.SchoolModel;
 import com.simsapi.model.dto.SchoolDto;
@@ -28,5 +29,16 @@ public class SchoolServiceImp implements SchoolService {
     @Override
     public Boolean insertSchool(SchoolDto schoolDto) {
         return schoolMapper.insertSchool(schoolDto);
+    }
+
+    @Override
+    public SaResult updateSchool(SchoolDto schoolDto) {
+        Boolean success = false;
+        success = schoolMapper.updateSchool(schoolDto);
+        if(success){
+            return SaResult.ok("更新成功");
+        }else {
+            return SaResult.error("更新失败");
+        }
     }
 }

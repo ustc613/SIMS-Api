@@ -25,4 +25,7 @@ public interface CourseService {
     TableResult<CourseModel> selectAllcoruseForSuper(SchoolDto schoolDto);
 
     SaResult insertCourseForManager(CourseDto courseDto);
+
+    SaResult updateCourse(CourseDto courseDto);
+
 }

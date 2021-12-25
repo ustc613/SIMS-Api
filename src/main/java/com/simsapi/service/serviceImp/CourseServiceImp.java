@@ -68,4 +68,15 @@ public class CourseServiceImp implements CourseService {
             return SaResult.error("插入课程失败,可能缺少有关信息");
         }
     }
+
+    @Override
+    public SaResult updateCourse(CourseDto courseDto) {
+        Boolean success = false;
+        success = courseMapper.updateCourse(courseDto);
+        if(success){
+            return SaResult.ok("更新成功");
+        }else {
+            return SaResult.error("更新失败");
+        }
+    }
 }

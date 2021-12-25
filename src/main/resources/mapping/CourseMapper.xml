@@ -28,4 +28,13 @@
         insert into course(schoolid,name,teachername) values
         (#{schoolid},#{name},#{teachername})
     </insert>
+
+    <update id="updateCourse" parameterType="com.simsapi.model.dto.CourseDto">
+        update course
+        <set>
+            <if test="name!=null">name=#{name},</if>
+            <if test="teachername!=null">teachername=#{teachername},</if>
+        </set>
+        where id=#{id}
+    </update>
 </mapper>

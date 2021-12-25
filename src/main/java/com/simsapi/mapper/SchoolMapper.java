@@ -30,4 +30,12 @@ public interface SchoolMapper {
      * @return
      */
     Boolean insertSchool(SchoolDto schoolDto);
+
+    /**
+     * 更新学校信息
+     * @param schoolDto
+     * @return
+     */
+    Boolean updateSchool(SchoolDto schoolDto);
+
 }

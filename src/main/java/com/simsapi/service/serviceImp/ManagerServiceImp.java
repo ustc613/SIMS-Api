@@ -52,4 +52,15 @@ public class ManagerServiceImp implements ManagerService {
         managerDto.setSchoolid(schoolMapper.selectSchoolId(managerDto.getSchoolname()));
         return managerMapper.insertManager(managerDto);
     }
+
+    @Override
+    public SaResult updateManager(ManagerDto managerDto) {
+        Boolean success = false;
+        success = managerMapper.updateManager(managerDto);
+        if(success){
+            return SaResult.ok("更新成功");
+        }else {
+            return SaResult.error("更新失败");
+        }
+    }
 }

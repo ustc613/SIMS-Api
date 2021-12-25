@@ -47,4 +47,11 @@ public interface StudentService {
      * @return
      */
     Boolean deleteStudentById(StudentDto studentDto);
+
+    /**
+     * 更新学生信息
+     * @param studentDto
+     * @return
+     */
+    SaResult upadteStudent(StudentDto studentDto);
 }

@@ -1,6 +1,5 @@
 package com.simsapi.mapper;
 
-import cn.dev33.satoken.util.SaResult;
 import com.simsapi.model.CourseModel;
 import com.simsapi.model.dto.CourseDto;
 import org.apache.ibatis.annotations.Mapper;
@@ -19,4 +18,11 @@ public interface CourseMapper {
     List<CourseModel> selectAllCoruse(Integer schoolid);
 
     Boolean insertCourseForManager(CourseDto courseDto);
+
+    /**
+     * 更新课程信息
+     * @param courseDto
+     * @return
+     */
+    Boolean updateCourse(CourseDto courseDto);
 }

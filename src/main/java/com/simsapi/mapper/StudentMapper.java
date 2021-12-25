@@ -59,4 +59,11 @@ public interface StudentMapper {
      * @return
      */
     Boolean deleteStudentById(Integer id);
+
+    /**
+     * 修改学生信息
+     * @param studentDto
+     * @return
+     */
+    Boolean updateStudent(StudentDto studentDto);
 }

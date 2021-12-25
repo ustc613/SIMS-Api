@@ -53,4 +53,6 @@ public interface ManagerMapper {
      * @return
      */
     Boolean insertManager(ManagerDto managerDto);
+
+    Boolean updateManager(ManagerDto managerDto);
 }

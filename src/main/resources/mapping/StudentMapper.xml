@@ -33,7 +33,6 @@
         <include refid="WithSchoolname_Column_List"/>
         from student st join school sc
         on st.schoolid=sc.id
-        <!--  limit #{start},#{pageSize}   -->
     </select>
     <!--  联合查询所有的学生总数，用于分页   -->
     <select id="selectCount" resultType="java.lang.Integer">
@@ -69,4 +68,17 @@
     <delete id="deleteStudentById">
         delete from student where id = #{id}
     </delete>
+
+    <update id="updateStudent" parameterType="com.simsapi.model.dto.StudentDto">
+        update student
+        <set>
+            <if test="name!=null">name=#{name},</if>
+            <if test="age!=null">age=#{age},</if>
+            <if test="sex!=null">sex=#{sex},</if>
+            <if test="phone!=null">phone=#{phone},</if>
+            <if test="username!=null">username=#{username},</if>
+            <if test="password!=null">password=#{password},</if>
+        </set>
+        where id=#{id}
+    </update>
 </mapper>

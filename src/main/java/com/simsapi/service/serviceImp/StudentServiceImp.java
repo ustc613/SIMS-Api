@@ -9,6 +9,7 @@ import com.simsapi.mapper.StudentMapper;
 import com.simsapi.model.CoursegradeModel;
 import com.simsapi.model.StudentModel;
 import com.simsapi.model.dto.ManagerDto;
+import com.simsapi.model.dto.SchoolDto;
 import com.simsapi.model.dto.StudentDto;
 import com.simsapi.model.res.StudentPersonalResult;
 import com.simsapi.model.res.TableResult;
@@ -98,4 +99,17 @@ public class StudentServiceImp implements StudentService {
     public Boolean deleteStudentById(StudentDto studentDto) {
         return studentMapper.deleteStudentById(studentDto.getId());
     }
+
+    @Override
+    public SaResult upadteStudent(StudentDto studentDto) {
+        Boolean success = false;
+        success = studentMapper.updateStudent(studentDto);
+        if(success){
+            return SaResult.ok("更新成功");
+        }else {
+            return SaResult.error("更新失败");
+        }
+    }
+
+
 }

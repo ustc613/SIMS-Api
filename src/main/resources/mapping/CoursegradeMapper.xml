@@ -20,5 +20,12 @@
         from coursegrade cg join course c
         on cg.courseid = c.id
     </select>
-
+    <!--    修改某个学生的成绩，没想好怎么用   -->
+    <update id="updateCourseGrade" parameterType="com.simsapi.model.dto.CoursegradeDto">
+        update coursegrade
+        <set>
+            <if test="grade!=null">grade=#{grade},</if>
+        </set>
+        where stuid=#{stuid}
+    </update>
 </mapper>
