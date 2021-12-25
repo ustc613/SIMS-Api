@@ -66,7 +66,6 @@ public class ManagerController {
      * @return
      */
     @PostMapping("/school")
-    @CrossOrigin(origins = "*",maxAge = 3600)
     @SaCheckRole(type = "manager",value = "super")
     public TableResult<SchoolModel> getAllSchool(){
         return schoolService.getSchool();
@@ -78,7 +77,6 @@ public class ManagerController {
      * @return
      */
     @PostMapping("/addSchool")
-    @CrossOrigin(origins = "*",maxAge = 3600)
     @SaCheckRole(type = "manager",value = "super")
     public Boolean addSchool(@RequestBody SchoolDto schoolDto){
         return schoolService.insertSchool(schoolDto);
@@ -91,7 +89,6 @@ public class ManagerController {
      * @return
      */
     @PostMapping("/addManager")
-    @CrossOrigin(origins = "*",maxAge = 3600)
     @SaCheckRole(type = "manager",value = "super")
     public Boolean addManager(@RequestBody ManagerDto managerDto){
         return managerService.insertManager(managerDto);
@@ -104,7 +101,6 @@ public class ManagerController {
      * @return
      */
     @PostMapping("/getCourses")
-    @CrossOrigin(origins = "*",maxAge = 3600)
     @SaCheckRole(type = "manager",value = "super")
     public TableResult<CourseModel> getCoursesForSuper(@RequestBody SchoolDto schoolDto){
         return courseService.selectAllcoruseForSuper(schoolDto);
@@ -119,7 +115,6 @@ public class ManagerController {
      * @return
      */
     @PostMapping("/allStudent")
-    @CrossOrigin(origins = "*",maxAge = 3600)
     @SaCheckRole(type = "manager",value = "normal")
     public TableResult<StudentModel> getStudentForManager(){
         ManagerDto managerDto = new ManagerDto();
@@ -133,7 +128,6 @@ public class ManagerController {
      * @return
      */
     @PostMapping("/allCourse")
-    @CrossOrigin(origins = "*",maxAge = 3600)
     @SaCheckRole(type = "manager",value = "normal")
     public TableResult<CourseModel> getCoursesForManager(){
         ManagerDto managerDto = new ManagerDto();
@@ -147,7 +141,6 @@ public class ManagerController {
      * @return
      */
     @PostMapping("/addCourse")
-    @CrossOrigin(origins = "*",maxAge = 3600)
     @SaCheckRole(type = "manager",value = "normal")
     public SaResult addCourseForManager(@RequestBody CourseDto courseDto){
         return courseService.insertCourseForManager(courseDto);
@@ -159,7 +152,6 @@ public class ManagerController {
      * @return
      */
     @PostMapping("/addStudent")
-    @CrossOrigin(origins = "*",maxAge = 3600)
     @SaCheckRole(type = "manager",value = "normal")
     public Boolean addStudent(@RequestBody StudentDto studentDto){
         return studentService.insertStudent(studentDto);
@@ -171,7 +163,6 @@ public class ManagerController {
      * @return
      */
     @PostMapping("/deleteStudent")
-    @CrossOrigin(origins = "*",maxAge = 3600)
     @SaCheckRole(type = "manager",value = "normal")
     public Boolean deleteStudent(@RequestBody StudentDto studentDto){
         return studentService.deleteStudentById(studentDto);
