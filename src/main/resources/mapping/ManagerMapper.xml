@@ -47,6 +47,7 @@
             <if test="sex!=null">sex=#{sex},</if>
             <if test="phone!=null">phone=#{phone},</if>
             <if test="role!=null">role=#{role},</if>
+            <if test="schoolid!=null">schoolid=#{schoolid},</if>
 
         </set>
         where id=#{id}
