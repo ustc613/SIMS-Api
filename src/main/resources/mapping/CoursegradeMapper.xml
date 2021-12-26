@@ -19,6 +19,7 @@
         <include refid="WithCoursename_Column_List"/>
         from coursegrade cg join course c
         on cg.courseid = c.id
+        where cg.stuid=#{id}
     </select>
     <!--    修改某个学生的成绩，没想好怎么用   -->
     <update id="updateCourseGrade" parameterType="com.simsapi.model.dto.CoursegradeDto">

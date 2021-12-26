@@ -120,7 +120,7 @@ public class ManagerController {
     @SaCheckRole(type = "manager",value = "normal")
     public TableResult<StudentModel> getStudentForManager(){
         ManagerDto managerDto = new ManagerDto();
-        managerDto.setId(StpUtil.getLoginIdAsInt());
+        managerDto.setId(StpManagerUtil.getLoginIdAsInt());
         return studentService.getSchoolStudent(managerDto);
     }
 
@@ -133,7 +133,7 @@ public class ManagerController {
     @SaCheckRole(type = "manager",value = "normal")
     public TableResult<CourseModel> getCoursesForManager(){
         ManagerDto managerDto = new ManagerDto();
-        managerDto.setId(StpUtil.getLoginIdAsInt());
+        managerDto.setId(StpManagerUtil.getLoginIdAsInt());
         return courseService.selectAllcoruse(managerDto);
     }
 

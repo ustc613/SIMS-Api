@@ -10,6 +10,7 @@ import com.simsapi.model.dto.StudentDto;
 import com.simsapi.model.res.StudentPersonalResult;
 import com.simsapi.model.res.TableResult;
 import com.simsapi.service.StudentService;
+import com.simsapi.utils.StpManagerUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
