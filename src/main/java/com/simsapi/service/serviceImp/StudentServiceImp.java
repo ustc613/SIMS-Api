@@ -88,7 +88,7 @@ public class StudentServiceImp implements StudentService {
 
     @Override
     public SaResult insertStudent(StudentDto studentDto) {
-        studentDto.setSchoolid(schoolMapper.selectSchoolId(studentDto.getSchoolname()));
+//        studentDto.setSchoolid(schoolMapper.selectSchoolId(studentDto.getSchoolname()));
         Boolean b = studentMapper.insertStudent(studentDto);
         if(b == true){
             return SaResult.ok("添加学生成功");

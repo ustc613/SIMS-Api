@@ -15,3 +15,5 @@ logging:
     com:
       simsapi:
         mapper : debug
+server:
+  port: 8087
