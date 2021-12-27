@@ -18,7 +18,7 @@
     <select id="selectAllCoruse" resultMap="BaseResultMap1">
         select
         <include refid="WithCourseAverage_Column_List"/>
-        from course c join coursegrade cg
+        from course c left join coursegrade cg
         on c.id = cg.courseid
         where c.schoolid = #{schoolid}
         group by c.id

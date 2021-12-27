@@ -52,9 +52,9 @@ public class CourseServiceImp implements CourseService {
     @Override
     public SaResult insertCourseForManager(CourseDto courseDto) {
         //先获取管理员id 用来获取他的学校id
-        Integer managerId = Integer.parseInt(StpManagerUtil.getLoginId().toString());
-        Integer schoolId = managerMapper.selectSchoolid(managerId);
-        courseDto.setSchoolid(schoolId);
+//        Integer managerId = Integer.parseInt(StpManagerUtil.getLoginId().toString());
+//        Integer schoolId = managerMapper.selectSchoolid(managerId);
+//        courseDto.setSchoolid(schoolId);
         Boolean success;
         //保证其他信息不为空
         if(courseDto.getName()!= null && courseDto.getTeachername()!= null){
